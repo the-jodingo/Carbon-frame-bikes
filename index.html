@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velox Carbon | Ultimate Performance Bicycles</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-dark: #121212;
+            --secondary-dark: #1e1e1e;
+            --accent: #ccff00; /* Neon Lime */
+            --text-light: #f5f5f5;
+            --text-gray: #a0a0a0;
+            --font-head: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- Reset & Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- Components --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--primary-dark);
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(to right, rgba(18,18,18,0.9) 30%, rgba(18,18,18,0.4)),
+                        url('https://picsum.photos/seed/roadbikecarbon/1920/1080') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 80px 0;
+            background-color: var(--primary-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border: 1px solid #333;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            background-color: var(--secondary-dark);
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+        }
+
+        /* --- Models/Showcase --- */
+        .showcase {
+            padding: 80px 0;
+            background-color: var(--secondary-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header .line {
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 0 auto;
+        }
+
+        .bikes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .bike-card {
+            background-color: var(--primary-dark);
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .bike-img {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bike-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .bike-card:hover .bike-img img {
+            transform: scale(1.1);
+        }
+
+        .bike-info {
+            padding: 30px;
+        }
+
+        .bike-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .specs-summary {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* --- Tech Specs Table --- */
+        .specs-section {
+            padding: 80px 0;
+            background-color: var(--primary-dark);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #000;
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .footer-logo {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .socials a {
+            color: var(--text-gray);
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .socials a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                display: none; /* Hidden for simple mobile view */
+            }
+            
+            nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">VELOX <span>CARBON</span></a>
+                <div class="nav-links">
+                    <a href="#technology">Technology</a>
+                    <a href="#models">Models</a>
+                    <a href="#specs">Specs</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Defy Gravity.</h1>
+                <p>Engineered with aerospace-grade carbon fiber. Ultra-lightweight, aerodynamic perfection for the serious rider.</p>
+                <a href="#models" class="btn btn-primary">View Bikes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Features -->
+    <section id="technology" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Carbon?</h2>
+                <div class="line"></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3>Ultralight Frame</h3>
+                    <p>Our monocoque construction minimizes weight without sacrificing structural integrity. Climb faster with less effort.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🛡️</div>
+                    <h3>Aero Efficiency</h3>
+                    <p>Wind tunnel tested tube shapes reduce drag significantly, allowing you to slice through the air effortlessly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌊</div>
+                    <h3>Vibration Damping</h3>
+                    <p>High-modulus carbon fiber absorbs road chatter, providing a smoother ride quality over long distances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Showcase -->
+    <section id="models" class="showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Fleet</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="bikes-grid">
+                <!-- Bike 1: Road -->
+                <article class="bike-card">
+                    <div class="bike-img">
+                        <img src="https://picsum.photos/seed/carbonroad/600/400" alt="Velox Aero Road">
+                    </div>
+                    <div class="bike-info">
+                        <h3>Velox Aero R1</h3>
+                        <p>Designed for pure speed. The R1 features an aggressive geometry optimized for TT and sprinting.</p>
+                        <div class="specs-summary">
+                            <span>Weight: 7.2kg</span>
+                            <span>Type: Road</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Details</a>
+                    </div>
+                </article>
+
+                <!-- Bike 2: Gravel -->
+                <article class="bike-card">
+                    <div class="bike-img">
+                        <img src="https://picsum.photos/seed/graveldirty/600/400" alt="Velox Gravel X">
+                    </div>
+                    <div class="bike-info">
+                        <h3>Velox Gravel X</h3>
+                        <p>Where the pavement ends, the fun begins. Wider tire clearance and relaxed stability for adventure.</p>
+                        <div class="specs-summary">
+                            <span>Weight: 8.4kg</span>
+                            <span>Type: Gravel</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Details</a>
+                    </div>
+                </article>
+
+                <!-- Bike 3: MTB -->
+                <article class="bike-card">
+                    <div class="bike-img">
+                        <img src="https://picsum.photos/seed/mtbmountain/600/400" alt="Velox Enduro MTB">
+                    </div>
+                    <div class="bike-info">
+                        <h3>Velox Enduro M1</h3>
+                        <p>Full-suspension carbon mastery. 150mm travel to absorb the biggest hits on the downhill trails.</p>
+                        <div class="specs-summary">
+                            <span>Weight: 12.5kg</span>
+                            <span>Type: MTB</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Details</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Specs Table -->
+    <section id="specs" class="specs-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Specifications</h2>
+                <div class="line"></div>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Aero R1 (Road)</th>
+                            <th>Gravel X (Adventure)</th>
+                            <th>Enduro M1 (MTB)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Frame Material</strong></td>
+                            <td>Toray T800 Carbon</td>
+                            <td>Toray T700 Carbon</td>
+                            <td>Toray T800 UD Carbon</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fork</strong></td>
+                            <td>Velox Full Carbon</td>
+                            <td>Velox Full Carbon w/ Thru-axle</td>
+                            <td>RockShox Lyrik Select</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Groupset</strong></td>
+                            <td>Shimano Ultegra Di2</td>
+                            <td>SRAM Rival 1x</td>
+                            <td>SRAM GX Eagle</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Brakes</strong></td>
+                            <td>Hydraulic Disc 160mm</td>
+                            <td>Hydraulic Disc 160mm</td>
+                            <td>Hydraulic Disc 200mm</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tire Clearance</strong></td>
+                            <td>28mm</td>
+                            <td>45mm</td>
+                            <td>29" x 2.4"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-logo">VELOX <span>CARBON</span></div>
+            <p style="color: #888;">Ride faster. Ride lighter.</p>
+            
+            <div class="socials" style="margin-top: 20px;">
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">YouTube</a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Velox Carbon Engineering. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
